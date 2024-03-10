@@ -233,22 +233,39 @@ The manually computed data flow coverage using the DU pair method correlates wit
 
 # 3 A detailed description of the testing strategy for the new unit test
 
-With the previous lab, we developed a test suite using only the information in the requirements (black box techniques) and achieved a decent result for the code coverage. Thus, our objective in this lab is to improve the code coverage using the white-box testing techniques primarily focusing on statement, branch and condition coverage metrics.
+Following the insights gained from the previous lab, where our test suite was primarily designed using black-box techniques, we now aim to refine our approach by incorporating white-box testing techniques. Our focus will be on enhancing the code coverage for selected methods within the `Range` and `DataUtilities` classes. This endeavour will employ statement, branch, and method coverage metrics as our guiding principles.
 
 ## Objectives
-- To improve the code coverage of the five methods of the `Range` class treated in the previous lab
+- To enhance the code coverage of the five methods of the `Range` class that were addressed in the preceding lab.
 - To improve the code coverage of the following methods of the `DataUtilities` class which are `DataUtilities.calculateColumnTotal` `DataUtilities.calculateRowTotal` and `DataUtilities.getCummulativePercentages`
 
 ## Test Strategies
 The following test strategies will be employed in this lab
 
 ### Statement coverage
+**Goal**: Ensure every executable statement in the method’s body is executed at least once.<br/>
+**Approach**: Craft test cases that traverse all paths, ensuring each line of code within the targeted methods is executed. This involves:
+- Identifying loops, conditional statements, and unique code blocks within each method.
+- Designing inputs that trigger each part of the method, including normal operation, boundary conditions and error cases.
 
 ### Branch coverage
+**Goal**: Guarantee that each possible branch from each decision point is executed.<br/>
+**Approach**: Extend beyond statement coverage by focusing on conditional statements (e.g., if-else, switch-case) within the methods to ensure all logical branches are tested. This includes:
+- Testing each condition that leads to different outcomes or branches.
+- Including test cases for exception handling paths, especially in methods known to throw exceptions under specific conditions.
 
-### Condition coverage
+### Method coverage
+**Goal**: Verify that each method is called and executed in the testing process.<br/>
+**Approach**: Specific attention will be paid to:
+- Directly calling and testing each method to ensure its functionality is validated.
+- Incorporating integration tests where necessary, especially for methods in `DataUtilities` that interact with datasets, to validate their correct behaviour in a broader context.
 
+## Implementing the Strategy
+- Test cases will be developed iteratively, starting with simpler cases to achieve statement coverage, and progressively incorporating more complex scenarios to achieve branch and method coverage.
+- Utilizing tools such as EclEmma will aid in identifying coverage metrics and uncovering untested code segments.
+- Continuous refinement of test cases will be undertaken based on feedback from coverage analysis, aiming for comprehensive coverage and uncovering potential edge cases or bugs.
 
+By employing these strategies, we aim to enhance the test coverage and thereby ensure a thorough validation of the `Range` and `DataUtilities` classes.
 
 # 4 A high-level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
