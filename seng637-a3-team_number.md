@@ -41,9 +41,9 @@ In the following sections, we will manually compute the data-flow coverage for t
 # 2 Manual data-flow coverage calculations for DataUtilities.calculateColumnTotal and Range.expand methods
 
 The data-flow coverage calculation for DataUtilities.calculateColumnTotal method is as follows. We first developed the data flow graph below and determined the Def-Use table to determine the data-flow coverage corresponding to that computed by the EclEmma library for the test cases developed during the black-box testing lab.
-![DFG-calculateColumnTotal](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/9b08f7bb-c0d9-40b8-853d-56d7a4e10f56)
+![DFG-calculateColumnTotal](media/DFG-calculateColumnTotal.png)
 *Data Flow graph for the `DataUtilities.calculateColumnTotal` method*
-![CodeCoverage-calculateColumnTotal](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/05dddcf0-ca9d-41dc-892a-989c5e4f99f0)
+![CodeCoverage-calculateColumnTotal](media/BB-calculateColumnTotal.png)
 *`DataUtilities.calculateColumnTotal` method code*
 
 From the DFG shown, we developed the Def-Use table as follows
@@ -126,9 +126,9 @@ The DU-pair coverage for this test is 1 pair.
 Considering all the test cases and the total coverage we have 12 pairs. We can now compute the data-flow coverage as **`total DU pairs covered / total DU pairs = 12/17 = 0.706 or 70.6%`**.
 
 The data-flow coverage calculation for the `Range.expand` method is as follows. We take similar steps as above with the `DataUtilities.calculateColumnTotal` method to compute the data-flow coverage. Thus the developed DFG is as shown.
-![DFG-expand](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/deed12f1-44f4-48fe-9ab6-a5b3a5a232e5)
+![DFG-expand](media/DFG-expand.png)
 *Data Flow graph for the `Range.expand` method*
-![CodeCoverage-expand](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/5d90517e-336e-4171-8871-5904581b328e)
+![CodeCoverage-expand](media/BB-expand.png)
 *`Range.expand` method code*
 
 From the DFG shown, we developed the Def-Use table as follows
@@ -228,7 +228,7 @@ This gives a total DU-pair coverage of 1 pair.
 Considering all the test cases and the total coverage we have 12 pairs. We can now compute the data-flow coverage as **`total DU pairs covered / total DU pairs = 12/16 = 0.75 or 75%`**.
 
 The manually computed data flow coverage using the DU pair method correlates with the results shown by EclEmma code coverage as shown below concentrating on the highlighted areas.
-![coverage-manual-check](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/4ccea399-3b6f-4579-898e-9b6bc9ea26d9)
+![CodeCoverage-manual-check](media/CodeCoverage-manual-check.png)
 *Verification of the manual coverage test as seen with the EclEmma tool*
 
 # 3 A detailed description of the testing strategy for the new unit test
@@ -259,7 +259,10 @@ In this section, we give a high-level description of five selected additional te
 **The strategy used**: Determine the combination of values for the margins and range object that will cause the condition `lower > upper` to be true.<br/>
 **Implementation**: The test case values were updated for the previous test suite to reach the desired condition.<br/>
 **Result**: The test coverage is increased from 75% to 100%
-![CodeCoverage-expand](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/5d90517e-336e-4171-8871-5904581b328e)
+(a) | (b) 
+:---:|:---:
+![BB-expand](media/BB-expand.png)|![WB-expand](media/WB-expand.png)
+
 *Test coverage increases with the test case and covers the branch*
 
 
@@ -268,52 +271,63 @@ In this section, we give a high-level description of five selected additional te
 The code coverage achieved for each class and their methods are summarized as follows with screenshots showing the coverage with the EclEmma tool.
 
 **`Range.getLength` method**
-The feasible test coverage as shown in the figure below that returns the difference between the upper and lower boundaries has been exhausted in the black box testing stage because the condition statement is never reached as it is addressed in the constructor block.
 
+The feasible test coverage as shown in the figure below that returns the difference between the upper and lower boundaries has been exhausted in the black box testing stage because the condition statement is never reached as it is addressed in the constructor block.
+![BB-getLength](media/BB-getLength.png)
 *Test coverage of the `getLength` method*
 
 **`Range.getLowerBound` method**
-The feasible test coverage as shown in the figure below that returns the lower boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
 
+The feasible test coverage as shown in the figure below that returns the lower boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
+![BB-getLowerBound](media/BB-getLowerBound.png)
 *Test coverage of the `getLowerBound` method*
 
 **`Range.getUpperBound` method**
-The feasible test coverage as shown in the figure below that returns the upper boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
 
+The feasible test coverage as shown in the figure below that returns the upper boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
+![BB-getUpperBound](media/BB-getUpperBound.png)
 *Test coverage of the `getUpperBound` method*
 
 **`Range.expand` method**
-The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
 
+The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
+![WB-expand](media/WB-expand.png)
 *Test coverage of the `expand` method*
 
 **`Range.shift` method**
-The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
 
+The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
+![BB-shift](media/BB-shift.png)
 *Test coverage of the `shift` method*
 
 **`DataUtilities.calculateColumnTotal` method**
-The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+![BB-calculateColumnTotal](media/BB-calculateColumnTotal.png)
 *Test coverage of the `calculateColumnTotal` method*
 
 **`DataUtilities.calculateRowTotal` method**
-The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+![BB-calculateRowTotal](media/BB-calculateRowTotal.png)
 *Test coverage of the `calculateRowTotal` method*
-**`DataUtilities.getCummulativePercentages` method**
-The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 
+**`DataUtilities.getCummulativePercentages` method**
+
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+![BB-getCummulativePercentages](media/BB-getCummulativePercentages.png)
 *Test coverage of the `getCummulativePercentages` method*
 
 **`DataUtilities.createNumberArray` method**
-The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
 
+The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
+![BB-createNumberArray](media/BB-createNumberArray.png)
 *Test coverage of the `createNumberArray` method*
 
 **`DataUtilities.createNumberArray2D` method**
-The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
 
+The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
+![BB-createNumberArray2D](media/BB-createNumberArray2D.png)
 *Test coverage of the `createNumberArray2D` method*
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
@@ -322,9 +336,9 @@ Text…
 
 # 7 A comparison of the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
-![coverage-test-BB](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/e4cc48d5-019c-429c-9177-19fab131aa82)
+![CodeCoverage-BB](media/CodeCoverage-BB.png)
 *Test coverage with requirement-based test generation using black box techniques*
-
+![CC-latest](media/CC-latest.png)
 *Test coverage with coverage-based test generation using white-box techniques*
 
 # 8 A discussion on how the teamwork/effort was divided and managed
@@ -345,10 +359,14 @@ Table 1: task assignments for each of the team members
 With the codebase associated with this lab when testing our test cases, we encountered an issue with the test. The results we had from the previous lab were not reproducible with the latest codebase. We had no errors with our previous lab but when we tested it against the new codebase we encountered errors. The errors were mostly a result of the mock library used and its dependency on the `hamcrest` library. We fixed the issue by using the older version (1.1) instead of the version (1.3) that was associated with the codebase associated with this lab.
 
 Another challenge that was managed is the attempts to improve the code coverage of the `DataUtilites.calculateColumnTotal` and `DataUtilities.calculateRowTotal` methods. The infeasible regions of the code led to an infinite loop when testing which had to be forcefully exited. A sample test case tested on the `DataUtilities.calculateColumnTotal` method to illustrate the process is shown below. The test case simulates an invalid `rowCount` of -2 using mock data so that the second for loop in the `DataUtilities.calculateColumnTotal` method runs but as expected the loop is never exited. This is shown by the highlights in the figure showing the test is stopped at 5 out of 43 test cases, the 5th test case being the `testInvalidData`.
-
+![WB-calucateColumnTotal-TC](media/WB-calculateColumnTotal-TC.png)
 *Test case attempting to test the infeasible region in the `DataUtilities.calculateColumnTotal` method*
 
 The resulting test coverage with this attempt also confirms that the second loop is run as shown below.
+![WB-calculateColumnTotal](media/WB-calculateColumnTotal.png)
+
+*Code coverage for the test case*
+
 
 # 10 Comments/feedback on the lab itself
 
