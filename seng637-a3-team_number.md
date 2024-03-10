@@ -9,13 +9,34 @@
 | Ogechukwu Kanu |
 | Emmanuel Alafonye |
 
+**Table of Content**
 
-(Note that some labs require individual reports while others require one report
-for each group. Please see each lab document for details.)
+[1 Introduction](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#1-introduction)
+
+[2 Manual data-flow coverage calculations for `DataUtilities.calculateColumnTotal` and `Range.expand` methods](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#2-manual-data-flow-coverage-calculations-for-datautilitiescalculatecolumntotal-and-rangeexpand-methods)
+
+[3 A detailed description of the testing strategy for the new unit test](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#3-a-detailed-description-of-the-testing-strategy-for-the-new-unit-test)
+
+[4 A high-level description of five selected test cases you have designed using coverage information, and how they have increased code coverage](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#4-a-high-level-description-of-five-selected-test-cases-you-have-designed-using-coverage-information-and-how-they-have-increased-code-coverage)
+
+[5 A detailed report of the coverage achieved of each class and method](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#5-a-detailed-report-of-the-coverage-achieved-of-each-class-and-method)
+
+[6 Pros and Cons of coverage tools used and Metrics you report](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#6-pros-and-cons-of-coverage-tools-used-and-metrics-you-report)
+
+[7 A comparison of the advantages and disadvantages of requirements-based test generation and coverage-based test generation.](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#7-a-comparison-of-the-advantages-and-disadvantages-of-requirements-based-test-generation-and-coverage-based-test-generation)
+
+[8 A discussion on how the teamwork/effort was divided and managed](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#8-a-discussion-on-how-the-teamworkeffort-was-divided-and-managed)
+
+[9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#9-any-difficulties-encountered-challenges-overcome-and-lessons-learned-from-performing-the-lab)
+
+[10 Comments/feedback on the lab itself](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#10-commentsfeedback-on-the-lab-itself)
 
 # 1 Introduction
 
-In this lab report, we discuss the 
+In this lab report, we discuss the analysis of the developed test suite from the previous lab using the code coverage tool EclEmma and how the test suite is improved for better code coverage. This was done by first familiarizing ourselves with the assignment instructions and understanding the required tasks to be completed. 
+
+In the following sections, we will manually compute the data-flow coverage for two methods, `DataUtilities.calculateColumnTotal` and `Range.expand`, devise a test strategy to improve the code coverage of the existing test suite, give a high-level overview of five of the test cases that were added, analyse the code coverage across the two classes (`DataUtilities` and `Range`) and their methods (all ten of them) with the improved test suite while stating any pros and cons observed. Then we compare the black box and white box testing techniques as employed in the labs, how the work was distributed among the team and the challenges and solutions used.
+
 
 # 2 Manual data-flow coverage calculations for DataUtilities.calculateColumnTotal and Range.expand methods
 
@@ -212,15 +233,88 @@ The manually computed data flow coverage using the DU pair method correlates wit
 
 # 3 A detailed description of the testing strategy for the new unit test
 
-Text…
+With the previous lab, we developed a test suite using only the information in the requirements (black box techniques) and achieved a decent result for the code coverage. Thus, our objective in this lab is to improve the code coverage using the white-box testing techniques primarily focusing on statement, branch and condition coverage metrics.
+
+## Objectives
+- To improve the code coverage of the five methods of the `Range` class treated in the previous lab
+- To improve the code coverage of the following methods of the `DataUtilities` class which are `DataUtilities.calculateColumnTotal` `DataUtilities.calculateRowTotal` and `DataUtilities.getCummulativePercentages`
+
+## Test Strategies
+The following test strategies will be employed in this lab
+
+### Statement coverage
+
+### Branch coverage
+
+### Condition coverage
+
+
 
 # 4 A high-level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
-Text…
+In this section, we give a high-level description of five selected additional test cases using the test strategy discussed in the last section to increase the code coverage.
 
-# 5 A detailed report of the coverage achieved of each class and method (a screenshot from the code cover results in green and red colour would suffice)
+## Test Case: `testExpandWithInvalidMargin`
+**Objective**: To test the behaviour when the margins are negative<br/>
+**The strategy used**: Determine the combination of values for the margins and range object that will cause the condition `lower > upper` to be true.<br/>
+**Implementation**: The test case values were updated for the previous test suite to reach the desired condition.<br/>
+**Result**: The test coverage is increased from 75% to 100%
+![CodeCoverage-expand](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/5d90517e-336e-4171-8871-5904581b328e)
+*Test coverage increases with the test case and covers the branch*
 
-Text…
+
+# 5 A detailed report of the coverage achieved of each class and method
+
+The code coverage achieved for each class and their methods are summarized as follows with screenshots showing the coverage with the EclEmma tool.
+
+**`Range.getLength` method**
+The feasible test coverage as shown in the figure below that returns the difference between the upper and lower boundaries has been exhausted in the black box testing stage because the condition statement is never reached as it is addressed in the constructor block.
+
+*Test coverage of the `getLength` method*
+
+**`Range.getLowerBound` method**
+The feasible test coverage as shown in the figure below that returns the lower boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
+
+*Test coverage of the `getLowerBound` method*
+
+**`Range.getUpperBound` method**
+The feasible test coverage as shown in the figure below that returns the upper boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
+
+*Test coverage of the `getUpperBound` method*
+
+**`Range.expand` method**
+The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
+
+*Test coverage of the `expand` method*
+
+**`Range.shift` method**
+The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
+
+*Test coverage of the `shift` method*
+
+**`DataUtilities.calculateColumnTotal` method**
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+
+*Test coverage of the `calculateColumnTotal` method*
+
+**`DataUtilities.calculateRowTotal` method**
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+
+*Test coverage of the `calculateRowTotal` method*
+**`DataUtilities.getCummulativePercentages` method**
+The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+
+*Test coverage of the `getCummulativePercentages` method*
+
+**`DataUtilities.createNumberArray` method**
+The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
+
+*Test coverage of the `createNumberArray` method*
+
+**`DataUtilities.createNumberArray2D` method**
+The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
+
+*Test coverage of the `createNumberArray2D` method*
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
@@ -231,17 +325,31 @@ Text…
 ![coverage-test-BB](https://github.com/seng637-Winter/seng637-a3-AllisonOge/assets/44110875/e4cc48d5-019c-429c-9177-19fab131aa82)
 *Test coverage with requirement-based test generation using black box techniques*
 
+*Test coverage with coverage-based test generation using white-box techniques*
 
 # 8 A discussion on how the teamwork/effort was divided and managed
 
-Text…
+Teamwork again was highly encouraged in this lab mostly because it is a continuation of the previous lab. Every member of the team contributed to improving the code coverage of the test suite and creating the lab report. The first stage involved every member brainstorming through the errors with the new codebase when integrating the test suite from the previous lab and then assigning duties based on strengths and continuation of assignments from the previous lab. That is if a member worked on developing the test cases for a method and the code coverage was not 100% the member had the duty of improving the code coverage to the maximum possible if 100% was not feasible.
+
+Table 1: task assignments for each of the team members
+| Team Member | Methods Under Test | Additional Duties |
+| --- | --- | --- |
+| Sami Abdelhalem | `org.jfree.data.test.ShiftTest` <br/> `org.jfree.data.test.GetCumulativePercentagesTest` | 
+| Mohammad Hallaq | `org.jfree.data.test.GetUpperBoundTest` <br/>  `org.jfree.data.test.GetLowerBoundTest` <br/> `org.jfree.data.test.CreateNumberArrayTest` | |
+| Ogechukwu Kanu | `org.jfree.data.test.ExpandTest` <br/> `org.jfree.data.DataUtilities.calculateRowTotalTest` <br/> `org.jfree.data.test.calculateColumnTotalTest` | Manual test coverage calculation, compilation of final code and finalizing lab report |
+| Emmanuel Alafonye | `org.jfree.data.test.GetLengthTest`| |
+
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-With the codebase associated with this lab when testing our test cases, we encountered an issue with the test. The results we had from the previous lab didn’t correlate w
+With the codebase associated with this lab when testing our test cases, we encountered an issue with the test. The results we had from the previous lab were not reproducible with the latest codebase. We had no errors with our previous lab but when we tested it against the new codebase we encountered errors. The errors were mostly a result of the mock library used and its dependency on the `hamcrest` library. We fixed the issue by using the older version (1.1) instead of the version (1.3) that was associated with the codebase associated with this lab.
+
+Another challenge that was managed is the attempts to improve the code coverage of the `DataUtilites.calculateColumnTotal` and `DataUtilities.calculateRowTotal` methods. The infeasible regions of the code led to an infinite loop when testing which had to be forcefully exited. A sample test case tested on the `DataUtilities.calculateColumnTotal` method to illustrate the process is shown below. The test case simulates an invalid `rowCount` of -2 using mock data so that the second for loop in the `DataUtilities.calculateColumnTotal` method runs but as expected the loop is never exited. This is shown by the highlights in the figure showing the test is stopped at 5 out of 43 test cases, the 5th test case being the `testInvalidData`.
+
+*Test case attempting to test the infeasible region in the `DataUtilities.calculateColumnTotal` method*
+
+The resulting test coverage with this attempt also confirms that the second loop is run as shown below.
 
 # 10 Comments/feedback on the lab itself
 
-Text…
-
-
+The lab helped to build teamwork, collaboration and sharing. We understood our strengths and weaknesses which enabled us to plan accordingly. We understood the data-flow coverage test and how it is computed with a code coverage tool like EclEmma as well as white box testing techniques. In conclusion, the lab was a success and we completed it successfully.
