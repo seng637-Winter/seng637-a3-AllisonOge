@@ -17,7 +17,7 @@
 
 [3 A detailed description of the testing strategy for the new unit test](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#3-a-detailed-description-of-the-testing-strategy-for-the-new-unit-test)
 
-[4 A high-level description of five selected test cases you have designed using coverage information, and how they have increased code coverage](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#4-a-high-level-description-of-five-selected-test-cases-you-have-designed-using-coverage-information-and-how-they-have-increased-code-coverage)
+[4 A high-level description of two selected test cases you have designed using coverage information, and how they have increased code coverage](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#4-a-high-level-description-of-two-selected-test-cases-you-have-designed-using-coverage-information-and-how-they-have-increased-code-coverage)
 
 [5 A detailed report of the coverage achieved of each class and method](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#5-a-detailed-report-of-the-coverage-achieved-of-each-class-and-method)
 
@@ -277,18 +277,29 @@ The following test strategies will be employed in this lab
 
 By employing these strategies, we aim to enhance the test coverage and thereby ensure a thorough validation of the `Range` and `DataUtilities` classes.
 
-# 4 A high-level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
+# 4 A high-level description of two selected test cases you have designed using coverage information, and how they have increased code coverage
 
 In this section, we give a high-level description of five selected additional test cases using the test strategy discussed in the last section to increase the code coverage.
 
 ## Test Case: `testExpandWithInvalidMargin`
 **Objective**: To test the behaviour when the margins are negative<br/>
 **The strategy used**: Determine the combination of values for the margins and range object that will cause the condition `lower > upper` to be true.<br/>
-**Implementation**: The test case values were updated for the previous test suite to reach the desired condition.<br/>
+**Implementation**: A new test case was added to reach the desired condition.<br/>
 **Result**: The test coverage is increased from 75% to 100%
 (a) | (b) 
 :---:|:---:
 ![BB-expand](media/BB-expand.png)|![WB-expand](media/WB-expand.png)
+
+*Test coverage increases with the test case and covers the branch*
+
+## Test Case: `testShiftWithZeroCrossingAllowed`
+**Objective**: To test the behaviour when zero crossing is allowed when shifting.<br/>
+**The strategy used**: Satisfy the condition `allowZeroCrossing` to reach the code block.<br/>
+**Implementation**: The test case values were updated for the previous test suite to reach the desired condition.<br/>
+**Result**: The test coverage is increased from 58.6% to 100%
+(a) | (b) 
+:---:|:---:
+![BB-shift](media/BB-shift.png)|![WB-shift](media/WB-shift.png)
 
 *Test coverage increases with the test case and covers the branch*
 
@@ -301,12 +312,14 @@ The code coverage achieved for each class and their methods are summarized as fo
 
 The feasible test coverage as shown in the figure below that returns the difference between the upper and lower boundaries has been exhausted in the black box testing stage because the condition statement is never reached as it is addressed in the constructor block.
 ![BB-getLength](media/BB-getLength.png)
+
 *Test coverage of the `getLength` method*
 
 **`Range.getLowerBound` method**
 
 The feasible test coverage as shown in the figure below that returns the lower boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
 ![BB-getLowerBound](media/BB-getLowerBound.png)
+
 *Test coverage of the `getLowerBound` method*
 
 **`Range.getUpperBound` method**
@@ -324,7 +337,7 @@ The test coverage was improved to 100% code coverage with white box testing tech
 **`Range.shift` method**
 
 The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
-![BB-shift](media/BB-shift.png)
+![WB-shift](media/WB-shift.png)
 *Test coverage of the `shift` method*
 
 **`DataUtilities.calculateColumnTotal` method**
@@ -383,7 +396,7 @@ Table 1: task assignments for each of the team members
 
 # 9 Any difficulties encountered, challenges overcome, and lessons learned from performing the lab
 
-With the codebase associated with this lab when testing our test cases, we encountered an issue with the test. The results we had from the previous lab were not reproducible with the latest codebase. We had no errors with our previous lab but when we tested it against the new codebase we encountered errors. The errors were mostly a result of the mock library used and its dependency on the `hamcrest` library. We fixed the issue by using the older version (1.1) instead of the version (1.3) that was associated with the codebase associated with this lab.
+With the codebase associated with this lab when testing our test cases, we encountered an issue with the test. The results we had from the previous lab were not reproducible with the latest codebase. We had no errors with our previous lab but when we tested it against the new codebase we encountered errors. The errors were mostly a result of the mock library used and its dependency on the `hamcrest` library. We fixed the issue by using the older version (1.1) instead of the version (1.3) that was associated with the codebase for this lab.
 
 Another challenge that was managed is the attempts to improve the code coverage of the `DataUtilites.calculateColumnTotal` and `DataUtilities.calculateRowTotal` methods. The infeasible regions of the code led to an infinite loop when testing which had to be forcefully exited. A sample test case tested on the `DataUtilities.calculateColumnTotal` method to illustrate the process is shown below. The test case simulates an invalid `rowCount` of -2 using mock data so that the second for loop in the `DataUtilities.calculateColumnTotal` method runs but as expected the loop is never exited. This is shown by the highlights in the figure showing the test is stopped at 5 out of 43 test cases, the 5th test case being the `testInvalidData`.
 ![WB-calucateColumnTotal-TC](media/WB-calculateColumnTotal-TC.png)
