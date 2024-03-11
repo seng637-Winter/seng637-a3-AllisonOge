@@ -52,23 +52,33 @@ From the DFG shown, we developed the Def-Use table as follows
 | data | 123 | 124, 126, 128, 134 |
 | column | 123 | 128, 134 |
 | total | 125 | 130, 136, 139 |
+| total | 130 | 130, 136, 139 |
+| total | 136 | 136, 139 |
 | rowCount | 126 | 127, 133 |
-| r | 127 | 127 |
-| r2 | 133 | 133 |
+| r* | 127 | 127 |
+| r2* | 133 | 133 |
 | n | 128 | 129, 130 |
 | n | 134 | 135, 136 |
+
+>*Associated with a for loop so it is multiplied by 4. See below for details
+>```
+>for ( a = 0;	// 1
+>	a < 3;	// 2
+>	a++ ) { } // 3
+>DU pair set for a  is {(1,3), (1, 3), (3, 2), (3,3)} (4 pairs)
+>```
 
 The Def-Use sets for the variables are as follows.
 
 For variable `data`: {(123, 124), (123, 126), (123, 128), (123, 134)} (4 pairs)<br/>
 For variable `column`: {(123, 128), (123, 134)} (2 pairs)<br/>
-For variable `total`: {(125, 130), (125, 136), (125, 139)} (3 pairs)<br/>
+For variable `total`: {(125, 130), (125, 136), (125, 139), (130, 130), (130, 136), (130, 139), (136, 136), (136, 139)} (8 pairs)<br/>
 For variable `rowCount`: {(126, 127), (126, 133)} (2 pairs)<br/>
-For variable `r`: {(127, 127)} (1 pair)<br/>
-For variable `r2`: {(133, 133)} (1 pair)<br/>
+For variable `r`: {(127, 127)} (1 pair) * 4<br/>
+For variable `r2`: {(133, 133)} (1 pair) * 4<br/>
 For variable `n`: {(128, 129), (128, 130), (134, 135), (134, 136)} (4 pairs)
 
-Thus, the total Def-Use pairs is 17 pairs.
+Thus, the total Def-Use pairs is 28 pairs.
 
 The test cases developed from the black-box testing lab are summarized in the following decision table.
 | Test Cases | Data Null | Column index | Expected Outcome |
@@ -87,13 +97,13 @@ The following Def-Use coverage is reached.
 
 For variable `data`: {(123, 124), (123, 126), (123, 128)} (3 pairs)<br/>
 For variable `column`: {(123, 128)} (1 pair)<br/>
-For variable `total`: {(125, 130), (125, 139)} (2 pairs)<br/>
+For variable `total`: {(125, 130), (125, 139), (130, 130), (130, 139)} (4 pairs)<br/>
 For variable `rowCount`: {(126, 127), (126, 133)} (2 pairs)<br/>
-For variable `r`: {(127, 127)} (1 pair)<br/>
-For variable `r2`: {(133, 133)} (1 pair)<br/>
+For variable `r`: {(127, 127)} (1 pair) * 4<br/>
+For variable `r2`: {(133, 133)} (1 pair) * 4<br/>
 For variable `n`: {(128, 129), (128, 130)} (2 pairs)
 
-This gives a total DU-pair coverage of 12 pairs.
+This gives a total DU-pair coverage of 20 pairs.
 
 **TC2**:
 The test case sets the arguments of the method as follows:<br/>
@@ -104,13 +114,13 @@ The following Def-Use coverage is reached.
 
 For variable `data`: {(123, 124), (123, 126), (123, 128)} (3 pairs)<br/>
 For variable `column`: {(123, 128)} (1 pair)<br/>
-For variable `total`: {(125, 130), (125, 139)} (2 pairs)<br/>
+For variable `total`: {(125, 130), (125, 139), (130, 130), (130, 139)} (4 pairs)<br/>
 For variable `rowCount`: {(126, 127), (126, 133)} (2 pairs)<br/>
-For variable `r`: {(127, 127)} (1 pair)<br/>
-For variable `r2`: {(133, 133)} (1 pair)<br/>
-For variable `n`: {(128, 129), (128, 130)} (2 pairs)<br/>
+For variable `r`: {(127, 127)} (1 pair) * 4<br/>
+For variable `r2`: {(133, 133)} (1 pair) * 4<br/>
+For variable `n`: {(128, 129), (128, 130)} (2 pairs)
 
-This also gives a total DU-pair coverage of 12 pairs.
+This also gives a total DU-pair coverage of 20 pairs.
 
 **TC3**:
 The test case sets the arguments of the method as follows:<br/>
@@ -123,7 +133,7 @@ For variable `data`: {(123, 124)} (1 pair)
 
 The DU-pair coverage for this test is 1 pair.
 
-Considering all the test cases and the total coverage we have 12 pairs. We can now compute the data-flow coverage as **`total DU pairs covered / total DU pairs = 12/17 = 0.706 or 70.6%`**.
+Considering all the test cases and the total coverage we have 12 pairs. We can now compute the data-flow coverage as **`total DU pairs covered / total DU pairs = 20/28 = 0.714 or 71.4%`**.
 
 The data-flow coverage calculation for the `Range.expand` method is as follows. We take similar steps as above with the `DataUtilities.calculateColumnTotal` method to compute the data-flow coverage. Thus the developed DFG is as shown.
 ![DFG-expand](media/DFG-expand.png)
