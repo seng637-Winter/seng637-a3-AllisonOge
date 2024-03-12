@@ -17,7 +17,7 @@
 
 [3 A detailed description of the testing strategy for the new unit test](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#3-a-detailed-description-of-the-testing-strategy-for-the-new-unit-test)
 
-[4 A high-level description of two selected test cases you have designed using coverage information, and how they have increased code coverage](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#4-a-high-level-description-of-two-selected-test-cases-you-have-designed-using-coverage-information-and-how-they-have-increased-code-coverage)
+[4 A high-level description of three selected test cases you have designed using coverage information, and how they have increased code coverage](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#4-a-high-level-description-of-three-selected-test-cases-you-have-designed-using-coverage-information-and-how-they-have-increased-code-coverage)
 
 [5 A detailed report of the coverage achieved of each class and method](https://github.com/seng637-Winter/seng637-a3-AllisonOge/blob/main/seng637-a3-team_number.md#5-a-detailed-report-of-the-coverage-achieved-of-each-class-and-method)
 
@@ -277,7 +277,7 @@ The following test strategies will be employed in this lab
 
 By employing these strategies, we aim to enhance the test coverage and thereby ensure a thorough validation of the `Range` and `DataUtilities` classes.
 
-# 4 A high-level description of two selected test cases you have designed using coverage information, and how they have increased code coverage
+# 4 A high-level description of three selected test cases you have designed using coverage information, and how they have increased code coverage
 
 In this section, we give a high-level description of five selected additional test cases using the test strategy discussed in the last section to increase the code coverage.
 
@@ -292,17 +292,27 @@ In this section, we give a high-level description of five selected additional te
 
 *Test coverage increases with the test case and covers the branch*
 
-## Test Case: `testShiftWithZeroCrossingAllowed`
-**Objective**: To test the behaviour when zero crossing is allowed when shifting.<br/>
-**The strategy used**: Satisfy the condition `allowZeroCrossing` to reach the code block.<br/>
-**Implementation**: The test case values were updated for the previous test suite to reach the desired condition.<br/>
-**Result**: The test coverage is increased from 58.6% to 100%
+## Test Case: `testPositiveRangeAllowingZeroCrossing`
+**Objective**: To validate the Range.shift method's ability to correctly handle zero crossing.<br/>
+**The strategy used**: Target the specific functionality allowing a positive range to shift into negative territory.<br/>
+**Implementation**: Introduced a new test, ensuring it exercises the condition where a range crosses zero.<br/>
+**Result**: Test coverage improved from 58.6% to 100%, effectively covering previously untested logic paths related to zero crossing.
 (a) | (b) 
 :---:|:---:
 ![BB-shift](media/BB-shift.png)|![WB-shift](media/WB-shift.png)
 
-*Test coverage increases with the test case and covers the branch*
+*Test coverage of the `shift` improved to 100%*
 
+## Test Case: `testCumulativePercentagesSingleNullValue`
+**Objective**: To validate the DataUtilities.getCumulativePercentages method's ability to handle null values in data correctly.<br/>
+**The strategy used**: Define mock data expectations to include null values.<br/>
+**Implementation**: Introduced a new test, ensuring it exercises the condition where the value of a single data is null.<br/>
+**Result**: Test (branch) coverage improves from 58.3% to 75.0% (as measured by the EclEmma tool).
+(a) | (b) 
+:---:|:---:
+![BB-getCumulativePercentages](media/BB-getCummulativePercentages.png)|![WB-getCumulativePercentages](media/WB-getCummulativePercentages.png)
+
+*Test coverage increases with the test case and covers more branches as indicated by the reduction of yellow lines*
 
 # 5 A detailed report of the coverage achieved of each class and method
 
@@ -352,11 +362,11 @@ The feasible test coverage for the method has been exhausted in the test suite a
 ![BB-calculateRowTotal](media/BB-calculateRowTotal.png)
 *Test coverage of the `calculateRowTotal` method*
 
-**`DataUtilities.getCummulativePercentages` method**
+**`DataUtilities.getCumulativePercentages` method**
 
-The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
-![BB-getCummulativePercentages](media/BB-getCummulativePercentages.png)
-*Test coverage of the `getCummulativePercentages` method*
+Beyond the coverage achieved from the test cases developed from the last lab, an additional test case improved the branch coverage to 75.0% and it has been discussed in the previous section. The final test coverage achieved in the feasible region is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
+![BB-getCumulativePercentages](media/WB-getCummulativePercentages.png)
+*Test coverage of the `getCumulativePercentages` method*
 
 **`DataUtilities.createNumberArray` method**
 
