@@ -37,6 +37,7 @@ In this lab report, we discuss the analysis of the developed test suite from the
 
 In the following sections, we will manually compute the data-flow coverage for two methods, `DataUtilities.calculateColumnTotal` and `Range.expand`, devise a test strategy to improve the code coverage of the existing test suite, give a high-level overview of five of the test cases that were added, analyse the code coverage across the two classes (`DataUtilities` and `Range`) and their methods (all ten of them) with the improved test suite while stating any pros and cons observed. Then we compare the black box and white box testing techniques as employed in the labs, how the work was distributed among the team and the challenges and solutions used.
 
+>The test suite can be found in the `org.jfree.data.test` package of the source directory.
 
 # 2 Manual data-flow coverage calculations for DataUtilities.calculateColumnTotal and Range.expand methods
 
@@ -314,6 +315,8 @@ In this section, we give a high-level description of five selected additional te
 
 *Test coverage increases with the test case and covers more branches as indicated by the reduction of yellow lines*
 
+Out of all the methods we tested in the previous lab only three were improved to a better coverage using the code coverage white-box techniques.
+
 # 5 A detailed report of the coverage achieved of each class and method
 
 The code coverage achieved for each class and their methods are summarized as follows with screenshots showing the coverage with the EclEmma tool.
@@ -336,60 +339,111 @@ The feasible test coverage as shown in the figure below that returns the lower b
 
 The feasible test coverage as shown in the figure below that returns the upper boundary has been exhausted because the condition statement is never reached as it is addressed in the constructor block.
 ![BB-getUpperBound](media/BB-getUpperBound.png)
+
 *Test coverage of the `getUpperBound` method*
 
 **`Range.expand` method**
 
 The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
 ![WB-expand](media/WB-expand.png)
+
 *Test coverage of the `expand` method*
 
 **`Range.shift` method**
 
 The test coverage was improved to 100% code coverage with white box testing techniques discussed in the previous section. See the code coverage in the figure below.
 ![WB-shift](media/WB-shift.png)
+
 *Test coverage of the `shift` method*
 
 **`DataUtilities.calculateColumnTotal` method**
 
 The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 ![BB-calculateColumnTotal](media/BB-calculateColumnTotal.png)
+
 *Test coverage of the `calculateColumnTotal` method*
 
 **`DataUtilities.calculateRowTotal` method**
 
 The feasible test coverage for the method has been exhausted in the test suite and it is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 ![BB-calculateRowTotal](media/BB-calculateRowTotal.png)
+
 *Test coverage of the `calculateRowTotal` method*
 
 **`DataUtilities.getCumulativePercentages` method**
 
 Beyond the coverage achieved from the test cases developed from the last lab, an additional test case improved the branch coverage to 75.0% and it has been discussed in the previous section. The final test coverage achieved in the feasible region is shown in the figure below. All attempts to reach infeasible areas resulted in an infinite loop which has been discussed in detail in section 9.
 ![BB-getCumulativePercentages](media/WB-getCummulativePercentages.png)
+
 *Test coverage of the `getCumulativePercentages` method*
 
 **`DataUtilities.createNumberArray` method**
 
 The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
 ![BB-createNumberArray](media/BB-createNumberArray.png)
+
 *Test coverage of the `createNumberArray` method*
 
 **`DataUtilities.createNumberArray2D` method**
 
 The test coverage is 100% code coverage as shown in the figure below. This was achieved in the last lab.
 ![BB-createNumberArray2D](media/BB-createNumberArray2D.png)
+
 *Test coverage of the `createNumberArray2D` method*
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-Text…
+Statement, branch and method coverage metrics are different metrics used in code coverage analysis to assess the effectiveness of a testing suite. However, there are some notable pros and cons to each of these metrics and we will briefly discuss them.
+
+## Statement Coverage Metric
+
+### Pros:
+- **Simplicity**: It is easy to understand and measure (it checks whether each line of code has been executed at least once).
+- **Initial Baseline**: It provides a quick overview of the untested parts of a codebase, which can be helpful for initial assessments.
+### Cons:
+- **Limited Depth**: A high statement coverage doesn’t guarantee that all execution paths are tested, as it doesn’t consider conditional logic.
+- **False Confidence**: It can give a false sense of security. This is because 100% statement coverage doesn’t mean the code is free from defects.
+
+## Branch Coverage Metric
+
+### Pros:
+- **Conditional Logic**: It tests both the true and false paths of each conditional, leading to more thorough testing of control structures.
+- **Bug Detection**: It is more effective at finding bugs than statement coverage because it considers different outcomes of decisions.
+### Cons:
+- **Complexity**: It is more complex to implement and analyze, as it requires more test cases to cover all possible branches.
+- **Potential Overhead**: It can lead to a significant increase in the number of test cases, especially in complex applications with many conditionals.
+
+## Method Coverage Metric
+
+### Pros:
+- **High-Level Overview**: It ensures that every method in the codebase is called, which can be a good indicator of untested functionalities.
+- **Simplification**: It simplifies test reporting by focusing on methods as the unit of measurement.
+### Cons:
+- **Incomplete Testing**: A 100% method coverage does not translate to coverage of all lines or branches within it.
+- **Missed Scenarios**: It doesn’t account for different usage scenarios and methods interactions which may lead to important behaviour being untested.
+
 
 # 7 A comparison of the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
+To show a comprehensive comparison of the two test generations, we will discuss the reports that inform us about how much of the code has been executed (covered) during testing. The requirement-based testing focuses on whether the software meets the specified requirements and it typically involves creating test cases based on user requirements and specifications without necessarily considering the internal structure of the code. The advantage of such a method is that it ensures the software functionality aligns with user expectations and requirements but there is the potential disadvantage of overlooking parts of the code that do not map directly to explicit requirements. On the other hand, code coverage testing emphasizes how much of the code is exercised by the test suite, which can measured in different granularities, such as method coverage, statement coverage, branch coverage, etc.. The primary advantage of code coverage is that it can identify untested parts of the code, exposing potential risks in areas that have not been executed during testing. However, high coverage does not necessarily mean high quality or the fulfilment of user requirements. It is possible to have a high coverage percentage with important functional scenarios still untested.
+
 ![CodeCoverage-BB](media/CodeCoverage-BB.png)
+
 *Test coverage with requirement-based test generation using black box techniques*
-![CC-latest](media/CC-latest.png)
+![CC-latest-Range](media/CC-latest-Range.png)
+![CC-latest-DataUtilties](media/CC-latest-DataUtilties.png)
+
 *Test coverage with coverage-based test generation using white-box techniques*
+
+Based on the reports above, the code coverage for the classes `Range` and `DataUtilties` indicate how thoroughly the tests exercise the code. For example, in the `Range` class, certain methods like `shiftWithNoZeroCrossing` have high coverage, indicating thorough testing, whereas there are missing test cases for methods of the `Range` class, pointing to potential areas for additional testing. Consequently, these uncovered additional testing is treated with coverage-based testing to reach an acceptable tradeoff between requirement coverage and code coverage. The statement, branch and method coverage that was achieved at the end of the lab for both classes are summarized below.
+
+![CC-Range](media/CC-Range.png)
+
+*Code coverage for the `Range` class with EclEmma tool*
+![CC-DataUtilites](media/CC-DataUtilites.png)
+
+*Code coverage for the `DataUtilities` class with EclEmma tool*
+
 
 # 8 A discussion on how the teamwork/effort was divided and managed
 
@@ -417,6 +471,7 @@ The resulting test coverage with this attempt also confirms that the second loop
 
 *Code coverage for the test case*
 
+The most important lesson learned from the lab was that it was effective to develop relevant testing cases through collaboration and sharing of ideas.
 
 # 10 Comments/feedback on the lab itself
 
